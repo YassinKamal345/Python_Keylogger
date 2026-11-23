@@ -1,20 +1,37 @@
 # Python_Keylogger
-A basic Python keylogger that sends captured keystrokes to a listener on a lab machine, built to understand how keystroke capture and exfiltration work.
 
-> ⚠️ **Disclaimer — educational use only.** This project was built and tested in an isolated lab (Windows VM + Kali Linux) that I own. Running it on any device or network without explicit written authorization is illegal. I am not responsible for any misuse.
+A basic Python keylogger that captures keystrokes and sends them to a listener on a lab
+machine, built to understand how keystroke capture and exfiltration work under the hood.
 
-# Change the ip address on the file
-Before converting it you should first locate your ip address on your kali linux machine and change it in the code
-To do so open the terminal then type " ifconfig" and you find your machine's ip address
-Then as root start listening to the port 443 by entering this command "nc -nvlp 443"
+> ⚠️ **Disclaimer — educational use only.** This project was built and tested in an isolated
+> lab (a Windows VM + Kali Linux) that I own. Running it on any device or network without the
+> owner's explicit written authorization is illegal. I am not responsible for any misuse.
 
+## How it works
 
-# Convert to .exe
-To convert the keylogger into a .exe file you need to have "pyinstaller" installed in your python scripts
-To do so open you CMD and type "pyinstaller --onefile .\keylogger.py"
-This will create a folder called dist, inside you will find the keylogger.exe file so you can execute it
+The script records keystrokes and streams them over the network to a listener you control.
 
-# Use
-Open the .exe file then start typing on your browser for exameple, you will see on the pop up everything you're typing
-When you're done press "Esc" to quit the program
-On your kali linux machine you should see everything word that was typed
+## Setup
+
+1. **Set the listener IP.** On your Kali machine, run `ifconfig` to find its IP address and
+   set it in `keylogger.py`.
+2. **Start the listener.** As root, listen on port 443:
+
+   ```bash
+   nc -nvlp 443
+   ```
+
+## Build an executable (optional)
+
+With [PyInstaller](https://pyinstaller.org/) installed:
+
+```bash
+pyinstaller --onefile keylogger.py
+```
+
+The executable is created in the `dist/` folder.
+
+## Usage
+
+Run the script (or the built `.exe`). Keystrokes are captured and sent to your listener, where
+you will see every key that is typed. Press `Esc` to quit.
