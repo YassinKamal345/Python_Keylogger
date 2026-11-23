@@ -1,5 +1,7 @@
 # Python_Keylogger
-A basic python keylogger that automatically sends the output to the ip address specified
+A basic Python keylogger that sends captured keystrokes to a listener on a lab machine, built to understand how keystroke capture and exfiltration work.
+
+> ⚠️ **Disclaimer — educational use only.** This project was built and tested in an isolated lab (Windows VM + Kali Linux) that I own. Running it on any device or network without explicit written authorization is illegal. I am not responsible for any misuse.
 
 # Change the ip address on the file
 Before converting it you should first locate your ip address on your kali linux machine and change it in the code
